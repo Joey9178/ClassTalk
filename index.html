@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五三班论坛</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+        body{background:#050a1a;color:#fff;min-height:100vh;display:flex;flex-direction:column}
+        #particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
+
+        nav{background:rgba(10,15,35,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(100,120,255,.3);padding:16px 30px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
+        .logo{font-size:24px;font-weight:bold;color:#00ccff;text-shadow:0 0 12px #00ccff}
+        .nav-links a{color:#fff;margin:0 16px;text-decoration:none;font-size:16px}
+        .nav-links a:hover{color:#00ccff;text-shadow:0 0 8px #00ccff}
+        .menu-btn{display:none;color:#fff;font-size:24px;cursor:pointer}
+
+        .banner{text-align:center;padding:60px 20px}
+        .banner h1{font-size:48px;margin-bottom:10px;text-shadow:0 0 25px #00ccff;color:#00ccff}
+        .banner p{color:#ccc;font-size:18px;margin-top:10px}
+
+        .container{max-width:1200px;margin:0 auto;padding:20px;flex:1}
+
+        .section-title{font-size:24px;margin:40px 0 20px;border-left:4px solid #00ccff;padding-left:12px}
+
+        .forum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
+        .forum-card{padding:25px;background:rgba(20,25,50,.7);border:1px solid rgba(0,204,255,.3);border-radius:12px;cursor:pointer;transition:all 0.3s ease}
+        .forum-card:hover{transform:scale(1.03);box-shadow:0 0 20px rgba(0,204,255,.4);border-color:#00ccff}
+        .forum-card h3{color:#00ccff;margin-bottom:10px;font-size:20px}
+        .forum-card p{color:#ccc;font-size:14px;line-height:1.5;margin-bottom:15px}
+        .forum-card .meta{color:#888;font-size:12px}
+
+        .post-list{margin-top:20px}
+        .post-item{padding:20px;background:rgba(20,25,50,.5);border:1px solid rgba(0,204,255,.2);border-radius:8px;margin-bottom:15px;cursor:pointer;transition:all 0.3s}
+        .post-item:hover{background:rgba(30,35,60,.7);border-color:#00ccff}
+        .post-item h4{color:#fff;font-size:16px;margin-bottom:8px}
+        .post-item .info{color:#888;font-size:12px}
+        .post-item .author{color:#00ccff;margin-right:15px}
+
+        .notice{background:rgba(0,204,255,.1);border:1px solid rgba(0,204,255,.3);padding:20px;border-radius:12px;margin:20px 0}
+        .notice h3{color:#00ccff;margin-bottom:10px}
+        .notice p{color:#ccc;line-height:1.6}
+
+        .quick-links{display:flex;gap:15px;flex-wrap:wrap;margin-top:20px}
+        .quick-links a{padding:10px 20px;background:rgba(0,204,255,.2);border:1px solid #00ccff;border-radius:6px;color:#00ccff;text-decoration:none;font-size:14px;transition:all 0.3s}
+        .quick-links a:hover{background:#00ccff;color:#050a1a}
+
+        footer{text-align:center;padding:30px;color:#666;width:100%;margin-top:auto}
+
+        @media(max-width:768px){
+            .menu-btn{display:block}
+            .nav-links{display:none;position:absolute;top:100%;left:0;width:100%;background:rgba(10,15,35,.95);flex-direction:column;padding:20px}
+            .nav-links.active{display:flex}
+            .nav-links a{margin:10px 0}
+        }
+    </style>
+</head>
+<body>
+    <div id="particles"></div>
+
+    <nav>
+        <div class="logo">五三班论坛</div>
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="#announce">班级公告</a>
+            <a href="#study">学习交流</a>
+            <a href="#game">游戏娱乐</a>
+            <a href="#chat">闲聊区</a>
+        </div>
+    </nav>
+
+    <div class="banner">
+        <h1>五三班论坛</h1>
+        <p>欢迎来到五（3）班专属论坛</p>
+    </div>
+
+    <div class="container">
+        <div class="notice" id="announce">
+            <h3>📢 班级公告</h3>
+            <p>欢迎大家来到五三班论坛！这里是同学们交流学习、分享生活的平台。请大家文明发言，共同维护我们的班级家园。</p>
+        </div>
+
+        <div class="section-title">📚 论坛板块</div>
+        <div class="forum-grid">
+            <div class="forum-card" onclick="location.href='#study'">
+                <h3>学习交流</h3>
+                <p>讨论学习方法、分享学习资料、交流学习心得</p>
+                <div class="meta">帖子数：128 | 最后更新：刚刚</div>
+            </div>
+            <div class="forum-card" onclick="location.href='#game'">
+                <h3>游戏娱乐</h3>
+                <p>分享好玩的小游戏、讨论游戏技巧、组队开黑</p>
+                <div class="meta">帖子数：256 | 最后更新：5分钟前</div>
+            </div>
+            <div class="forum-card" onclick="location.href='#chat'">
+                <h3>闲聊区</h3>
+                <p>聊聊日常生活、分享有趣的事情、增进同学友谊</p>
+                <div class="meta">帖子数：512 | 最后更新：1分钟前</div>
+            </div>
+            <div class="forum-card" onclick="location.href='#notice'">
+                <h3>资源共享</h3>
+                <p>分享学习资料、软件下载、有价值的链接</p>
+                <div class="meta">帖子数：64 | 最后更新：10分钟前</div>
+            </div>
+        </div>
+
+        <div class="section-title" id="study">� 热门帖子 - 学习交流</div>
+        <div class="post-list">
+            <div class="post-item">
+                <h4>【求助】数学难题，求大神解答！</h4>
+                <div class="info"><span class="author">王焯宇</span>发布于 10分钟前 | 回复：23</div>
+            </div>
+            <div class="post-item">
+                <h4>英语语法笔记分享，持续更新中...</h4>
+                <div class="info"><span class="author">易宏睿</span>发布于 30分钟前 | 回复：45</div>
+            </div>
+            <div class="post-item">
+                <h4>期中复习资料汇总，转发收藏！</h4>
+                <div class="info"><span class="author">姜明轩</span>发布于 1小时前 | 回复：67</div>
+            </div>
+        </div>
+
+        <div class="section-title" id="game">🎮 热门帖子 - 游戏娱乐</div>
+        <div class="post-list">
+            <div class="post-item">
+                <h4>poki游戏大全，机房必玩！</h4>
+                <div class="info"><span class="author">王焯宇</span>发布于 5分钟前 | 回复：89</div>
+            </div>
+            <div class="post-item">
+                <h4>4399小游戏推荐清单</h4>
+                <div class="info"><span class="author">易宏睿</span>发布于 15分钟前 | 回复：56</div>
+            </div>
+        </div>
+
+        <div class="section-title" id="chat">💬 热门帖子 - 闲聊区</div>
+        <div class="post-list">
+            <div class="post-item">
+                <h4>今天食堂的饭菜怎么样？</h4>
+                <div class="info"><span class="author">姜明轩</span>发布于 1分钟前 | 回复：12</div>
+            </div>
+            <div class="post-item">
+                <h4>放学后一起打篮球吗？</h4>
+                <div class="info"><span class="author">王焯宇</span>发布于 3分钟前 | 回复：8</div>
+            </div>
+        </div>
+
+        <div class="section-title">⚡ 快捷入口</div>
+        <div class="quick-links">
+            <a href="https://poki.com/zh" target="_blank">🎮 poki游戏</a>
+            <a href="https://WWW.4399.com" target="_blank">🎯 4399游戏</a>
+            <a href="https://Joey9178.github.io/setup" target="_blank">📦 软件下载</a>
+        </div>
+    </div>
+
+    <footer>© 2026 五三班论坛 | www.Joey91.com</footer>
+
+    <script>
+        const part=document.getElementById("particles");
+        for(let i=0;i<50;i++){
+            let d=document.createElement("div");
+            d.style.cssText="position:absolute;width:3px;height:3px;background:#00ccff;border-radius:50%;opacity:"+(Math.random()*0.6+0.2)+";left:"+Math.random()*100+"%;top:"+Math.random()*100+"%;box-shadow:0 0 8px #00ccff";
+            part.appendChild(d);
+        }
+
+        function toggleMenu(){
+            document.getElementById("navLinks").classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
